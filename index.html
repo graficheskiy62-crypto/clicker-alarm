@@ -41,7 +41,7 @@
             border-radius: 100px;
             border: none;
             background-color: #cfe6ff;
-            background-image: url('picture1.png');
+            background-image: url('https://raw.githubusercontent.com/graficheskiy62-crypto/clicker-alarm/refs/heads/main/picture1.png');
             background-size: cover;
             background-position: center;
             cursor: pointer;
@@ -174,19 +174,19 @@
                 score -= skinPrice1;
                 skin1 = true;
                 currentSkin = 1;
-                changeSkin('pic2.png');
+                changeSkin('https://raw.githubusercontent.com/graficheskiy62-crypto/clicker-alarm/refs/heads/main/pic2.png');
                 skinBtn.textContent = `КУПИТЬ СКИН (${skinPrice2})`;
             } else if (score >= skinPrice2 && !skin2) {
                 score -= skinPrice2;
                 skin2 = true;
                 currentSkin = 2;
-                changeSkin('pic3.png');
+                changeSkin('https://raw.githubusercontent.com/graficheskiy62-crypto/clicker-alarm/refs/heads/main/pic3.png');
                 skinBtn.textContent = `КУПИТЬ СКИН (${skinPrice3})`;
             } else if (score >= skinPrice3 && !skin3) {
                 score -= skinPrice3;
                 skin3 = true;
                 currentSkin = 3;
-                changeSkin('pic4.png');
+                changeSkin('https://raw.githubusercontent.com/graficheskiy62-crypto/clicker-alarm/refs/heads/main/pic4.png');
                 skinBtn.style.display = 'none';
             }
             scoreLabel.textContent = `⏰ ${score}`;

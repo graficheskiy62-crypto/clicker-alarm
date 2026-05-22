@@ -35,15 +35,13 @@
             margin-top: 40px;
         }
 
-        /* ЗАГЛУШКА ДЛЯ ГЛАВНОЙ КНОПКИ */
-        /* ЗАМЕНИТЕ background-image НА: url('picture1.png') */
         .click-btn {
             width: 200px;
             height: 200px;
             border-radius: 100px;
             border: none;
             background-color: #cfe6ff;
-            background-image: url(https://raw.githubusercontent.com/graficheskiy62-crypto/clicker-alarm/main/picture1.png);
+            background-image: url('picture1.png');
             background-size: cover;
             background-position: center;
             cursor: pointer;
@@ -125,12 +123,6 @@
     <div class="container">
         <div class="score-label" id="scoreLabel">⏰ 0</div>
         
-        <!-- ГЛАВНАЯ КНОПКА-КЛИКЕР -->
-        <!-- ЗАМЕНИТЕ background-image В CSS КЛАССЕ .click-btn -->
-        <!-- picture1.png - начальный скин -->
-        <!-- picture2.png - первый купленный скин -->
-        <!-- picture3.png - второй купленный скин -->
-        <!-- picture4.png - третий купленный скин -->
         <button class="click-btn" id="clickBtn" onclick="on_click()"></button>
 
         <div class="shop-label">Магазин улучшений</div>
@@ -154,22 +146,19 @@
         let skin3 = false;
         let skin4 = false;
         
-        let currentSkin = 0; // 0 - начальный, 1-3 - купленные
+        let currentSkin = 0;
 
-        // Элементы DOM
         const scoreLabel = document.getElementById('scoreLabel');
         const clickBtn = document.getElementById('clickBtn');
         const shopBtn = document.getElementById('shopBtn');
         const skinBtn = document.getElementById('skinBtn');
 
-        // Функция клика
         function on_click() {
             score += clickPower;
             scoreLabel.textContent = `⏰ ${score}`;
             update();
         }
 
-        // Покупка улучшения
         function buy() {
             if (score >= price) {
                 score -= price;
@@ -180,41 +169,35 @@
             }
         }
 
-        // Покупка скинов
         function buy2() {
             if (score >= skinPrice1 && !skin1) {
                 score -= skinPrice1;
                 skin1 = true;
                 currentSkin = 1;
-                changeSkin(2); // picture2.png
+                changeSkin('pic2.png');
                 skinBtn.textContent = `КУПИТЬ СКИН (${skinPrice2})`;
             } else if (score >= skinPrice2 && !skin2) {
                 score -= skinPrice2;
                 skin2 = true;
                 currentSkin = 2;
-                changeSkin(3); // picture3.png
+                changeSkin('pic3.png');
                 skinBtn.textContent = `КУПИТЬ СКИН (${skinPrice3})`;
             } else if (score >= skinPrice3 && !skin3) {
                 score -= skinPrice3;
                 skin3 = true;
                 currentSkin = 3;
-                changeSkin(4); // picture4.png
+                changeSkin('pic4.png');
                 skinBtn.style.display = 'none';
             }
             scoreLabel.textContent = `⏰ ${score}`;
             update();
         }
 
-        // Смена скина
-        function changeSkin(picNum) {
-            // ЗАМЕНИТЕ ЭТУ СТРОКУ НА НУЖНОЕ ИЗОБРАЖЕНИЕ:
-            // clickBtn.style.backgroundImage = `url('picture${picNum}.png')`;
-            clickBtn.style.backgroundImage = `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="%23${['9ec5ff','ff9e9e','9eff9e','ffe09e'][picNum]}" width="200" height="200"/><text x="50%" y="50%" font-size="60" fill="white" text-anchor="middle" dy=".3em">⏰</text></svg>')`;
+        function changeSkin(imageFile) {
+            clickBtn.style.backgroundImage = `url('${imageFile}')`;
         }
 
-        // Обновление интерфейса
         function update() {
-            // Обновление кнопки магазина
             if (score >= price) {
                 shopBtn.disabled = false;
                 shopBtn.textContent = `КУПИТЬ (${price})`;
@@ -223,7 +206,6 @@
                 shopBtn.textContent = `НУЖНО (${price})`;
             }
 
-            // Обновление кнопки скинов
             if (!skin1) {
                 if (score >= skinPrice1) {
                     skinBtn.disabled = false;
@@ -251,7 +233,6 @@
             }
         }
 
-        // Инициализация
         update();
     </script>
 </body>
